@@ -34,6 +34,7 @@
             // 
             // mainText
             // 
+            this.mainText.ActiveLinkColor = System.Drawing.Color.DarkGray;
             this.mainText.DisabledLinkColor = System.Drawing.SystemColors.ControlText;
             this.mainText.LinkColor = System.Drawing.Color.Red;
             this.mainText.Location = new System.Drawing.Point(0, 0);
@@ -51,7 +52,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "mistakesForm";

@@ -21,3 +21,4 @@ C:\Users\davro\source\repos\EnglishWritingProject\EnglishWritingProject\bin\Debu
 C:\Users\davro\source\repos\EnglishWritingProject\EnglishWritingProject\bin\Debug\NHunspell.dll
 C:\Users\davro\source\repos\EnglishWritingProject\EnglishWritingProject\bin\Debug\NHunspell.pdb
 C:\Users\davro\source\repos\EnglishWritingProject\EnglishWritingProject\obj\Debug\EnglishWritingProject.mistakesForm.resources
+C:\Users\davro\source\repos\EnglishWritingProject\EnglishWritingProject\obj\Debug\EnglishWritingProject.deleteAccount.resources

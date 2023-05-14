@@ -53,6 +53,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="deleteAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="deleteAccount.Designer.cs">
+      <DependentUpon>deleteAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="forgotPassordForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="signupForm.Designer.cs">
       <DependentUpon>signupForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="deleteAccount.resx">
+      <DependentUpon>deleteAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forgotPassordForm.resx">
       <DependentUpon>forgotPassordForm.cs</DependentUpon>
     </EmbeddedResource>

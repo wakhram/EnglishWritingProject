@@ -48,6 +48,7 @@
             this.statisticsButton = new System.Windows.Forms.Button();
             this.mistakesButton = new System.Windows.Forms.Button();
             this.datesComboBox = new System.Windows.Forms.ComboBox();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -179,7 +180,7 @@
             this.createFileButton.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.createFileButton.Image = ((System.Drawing.Image)(resources.GetObject("createFileButton.Image")));
             this.createFileButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.createFileButton.Location = new System.Drawing.Point(185, 569);
+            this.createFileButton.Location = new System.Drawing.Point(185, 558);
             this.createFileButton.Name = "createFileButton";
             this.createFileButton.Size = new System.Drawing.Size(203, 49);
             this.createFileButton.TabIndex = 21;
@@ -192,7 +193,7 @@
             this.saveFileButton.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.saveFileButton.Image = ((System.Drawing.Image)(resources.GetObject("saveFileButton.Image")));
             this.saveFileButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveFileButton.Location = new System.Drawing.Point(692, 569);
+            this.saveFileButton.Location = new System.Drawing.Point(692, 558);
             this.saveFileButton.Name = "saveFileButton";
             this.saveFileButton.Size = new System.Drawing.Size(203, 49);
             this.saveFileButton.TabIndex = 22;
@@ -240,7 +241,7 @@
             this.mistakesButton.Font = new System.Drawing.Font("Palatino Linotype", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.mistakesButton.Image = ((System.Drawing.Image)(resources.GetObject("mistakesButton.Image")));
             this.mistakesButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.mistakesButton.Location = new System.Drawing.Point(914, 569);
+            this.mistakesButton.Location = new System.Drawing.Point(914, 558);
             this.mistakesButton.Name = "mistakesButton";
             this.mistakesButton.Size = new System.Drawing.Size(156, 49);
             this.mistakesButton.TabIndex = 26;
@@ -253,11 +254,21 @@
             // 
             this.datesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.datesComboBox.FormattingEnabled = true;
-            this.datesComboBox.Location = new System.Drawing.Point(12, 578);
+            this.datesComboBox.Location = new System.Drawing.Point(12, 567);
             this.datesComboBox.Name = "datesComboBox";
             this.datesComboBox.Size = new System.Drawing.Size(156, 32);
             this.datesComboBox.TabIndex = 27;
             this.datesComboBox.SelectedIndexChanged += new System.EventHandler(this.datesComboBox_SelectedIndexChanged);
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.Location = new System.Drawing.Point(1050, 615);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(30, 37);
+            this.deleteButton.TabIndex = 28;
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButtonClick);
             // 
             // mainForm
             // 
@@ -265,6 +276,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1082, 653);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.datesComboBox);
             this.Controls.Add(this.mistakesButton);
             this.Controls.Add(this.statisticsButton);
@@ -317,5 +329,6 @@
         private System.Windows.Forms.Button statisticsButton;
         private System.Windows.Forms.Button mistakesButton;
         private System.Windows.Forms.ComboBox datesComboBox;
+        private System.Windows.Forms.Button deleteButton;
     }
 }

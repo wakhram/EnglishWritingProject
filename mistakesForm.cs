@@ -18,19 +18,32 @@ namespace EnglishWritingProject
         {
             InitializeComponent();
 
-            XDocument doc = XDocument.Load(path);
-            XElement datas = doc.Element("datas");
-            XElement t = datas.Element("text");
-            string text = t.Value;
-
-            mainText.Text = text;
-            
-            XDocument doc2 = XDocument.Load(mPath);
-            XElement datas2 = doc2.Element("datas");
-            foreach (XElement word in datas2.Elements("word"))
+            if (File.Exists(mPath))
             {
-                int myIndex = text.IndexOf(word.Value);
-                mainText.Links.Add(myIndex, word.Value.Length);
+                XDocument doc = XDocument.Load(path);
+                XElement datas = doc.Element("datas");
+                XElement t = datas.Element("text");
+                string text = t.Value;
+
+                mainText.Text = text;
+
+                XDocument doc2 = XDocument.Load(mPath);
+                XElement datas2 = doc2.Element("datas");
+                foreach (XElement word in datas2.Elements("word"))
+                {
+                    int myIndex = text.IndexOf(word.Value);
+                    mainText.Links.Add(myIndex, word.Value.Length);
+                }
+            }
+            else
+            {
+                XDocument doc = XDocument.Load(path);
+                XElement datas = doc.Element("datas");
+                XElement t = datas.Element("text");
+                string text = t.Value;
+
+                mainText.Text = text;
+                mainText.Enabled = false;
             }
 
         }

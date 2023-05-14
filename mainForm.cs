@@ -176,12 +176,6 @@ namespace EnglishWritingProject
                     }
                 }
             }
-            else
-            {
-
-            }
-
-            
         }
 
         private void saveFileCreateTime (string topic)
@@ -191,31 +185,30 @@ namespace EnglishWritingProject
             {
                 XDocument doc = XDocument.Load(path);
                 XElement datas = doc.Element("datas");
-                XElement text = doc.Element("text");
+                XElement text = new XElement("text");
 
                 XElement myTopic = new XElement("topic");
                 myTopic.Value = topic;
 
                 XElement time = new XElement("time");
-                myTopic.Value = DateTime.Now.ToString("HH:mm:ss dd.MM.yyyy");
+                time.Value = DateTime.Now.ToString("HH:mm:ss dd.MM.yyyy");
 
                 text.Add(myTopic, time);
                 datas.Add(text);
 
-                doc.Add(datas);
                 doc.Save(path);
             }
             else
             {
                 XDocument doc = new XDocument();
                 XElement datas = new XElement("datas");
-                XElement text = doc.Element("text");
+                XElement text = new XElement("text");
 
                 XElement myTopic = new XElement("topic");
                 myTopic.Value = topic;
 
                 XElement time = new XElement("time");
-                myTopic.Value = DateTime.Now.ToString("HH:mm:ss dd.MM.yyyy");
+                time.Value = DateTime.Now.ToString("HH:mm:ss dd.MM.yyyy");
 
                 text.Add(myTopic, time);
                 datas.Add(text);
@@ -252,7 +245,7 @@ namespace EnglishWritingProject
                 string fName2 = topicLabel.Text + ".txt";
                 doc.Save(@"..\Debug\" + login + @"\xml\" + fName);
 
-                File.Create(@"..\Debug\" + login + @"\txt\" + fName2);
+                //File.Create(@"..\Debug\" + login + @"\txt\" + fName2);
 
                 saveFileCreateTime(topicLabel.Text);
 
@@ -445,6 +438,29 @@ namespace EnglishWritingProject
             topicButton.Enabled = true;
             saveFileButton.Enabled = true;
             createFileButton.Enabled = true;
+
+            string path = @"..\Debug\" + login + @"\AllTexts.xml";
+
+            if (File.Exists(path))
+            {
+                foreach (string time in writtenTopicsTime)
+                {
+                    DateTime dateTime = DateTime.ParseExact(time, "HH:mm:ss dd.MM.yyyy", CultureInfo.InvariantCulture);
+                    TimeSpan ts = DateTime.Now - dateTime;
+                    int seconds = Convert.ToInt32(ts.TotalSeconds);
+
+                    if (seconds <= 86400)
+                    {
+                        topicButton.Enabled = false;
+                        createFileButton.Enabled = false;
+                        break;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+            }
         }
 
         private void statisticsButtonClick(object sender, EventArgs e)
@@ -596,6 +612,33 @@ namespace EnglishWritingProject
             }
         }
 
+        private void deleteButtonClick(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("By clicking \"Yes\" you will permanently delete this account, with all its data, are you sure?", "Account deleting", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //yes
+                XDocument xdoc = XDocument.Load("accounts.xml");
+                XElement root = xdoc.Element("datas");
+
+                if (root != null)
+                {
+                    // получим элемент person с name = "Bob"
+                    var bob = root.Elements("Account")
+                        .FirstOrDefault(p => p.Attribute("login")?.Value == login);
+                    // и удалим его
+                    if (bob != null)
+                    {
+                        bob.Remove();
+                        xdoc.Save("accounts.xml");
+                    }
+                }
+
+                Directory.Delete(@"..\Debug\" + login, true);
+                this.Close();
+            }
+        }
+
         private void saveFileButtonClick(object sender, EventArgs e)
         {
             if (topicLabel.Text != "")
@@ -618,7 +661,7 @@ namespace EnglishWritingProject
 
                         doc.Save(fName);
 
-                        StreamWriter sw = new StreamWriter(@"..\Debug\" + login + @"\txt\" + topicLabel.Text + ".txt");
+                        StreamWriter sw = new StreamWriter(fName2);
                         sw.WriteLine(mainTextBox.Text);
                         sw.Close();
 
